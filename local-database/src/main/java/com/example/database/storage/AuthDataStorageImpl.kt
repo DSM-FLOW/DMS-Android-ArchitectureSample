@@ -8,8 +8,9 @@ import com.example.database.storage.AuthDataStorageImpl.Key.REFRESH_TOKEN
 import javax.inject.Inject
 
 class AuthDataStorageImpl @Inject constructor(
-    private val context: Context
-): AuthDataStorage {
+    private val context: Context,
+    private val localUserViewParam: LocalUserViewParam
+) : AuthDataStorage {
 
     override fun setAccessToken(token: String) {
         getSharedPreference().edit().let {
@@ -53,9 +54,13 @@ class AuthDataStorageImpl @Inject constructor(
         }
     }
 
-    override fun fetchViewBoolean() {
-        TODO("Not yet implemented")
-    }
+    override fun fetchViewBoolean(): LocalUserViewParam =
+        LocalUserViewParam(
+            getSharedPreference().getBoolean(MEAL.toString(), localUserViewParam.meal),
+            getSharedPreference().getBoolean(POINT.toString(), localUserViewParam.point),
+            getSharedPreference().getBoolean(NOTICE.toString(), localUserViewParam.notice),
+        )
+
 
     private fun getSharedPreference() =
         PreferenceManager.getDefaultSharedPreferences(context)
