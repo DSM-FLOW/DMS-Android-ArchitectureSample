@@ -5,7 +5,7 @@ import com.example.database.storage.AuthDataStorage
 import javax.inject.Inject
 
 class LocalUserDataSourceImpl @Inject constructor(
-    val authDataStorage: AuthDataStorage
+    private val authDataStorage: AuthDataStorage
 ): LocalUserDataSource {
     override suspend fun fetchViewBoolean(
         localUserViewParam: LocalUserViewParam

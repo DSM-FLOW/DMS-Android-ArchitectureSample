@@ -1,6 +1,8 @@
 package com.example.database.storage
 
 import com.example.database.param.LocalUserViewParam
+import com.example.database_domain.entity.UserVisibleEntity
+import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 
 interface AuthDataStorage {
@@ -14,5 +16,5 @@ interface AuthDataStorage {
     fun clearRefreshToken()
 
     fun setViewBoolean(localUserViewParam: LocalUserViewParam)
-    fun fetchViewBoolean()
+    fun fetchViewBoolean(): UserVisibleEntity
 }
