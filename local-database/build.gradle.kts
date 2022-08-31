@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain-local-database"))
     implementation(Dependency.Coroutine.core)
     implementation(Dependency.LocalStorage.room)
     kapt(Dependency.LocalStorage.roomCompiler)
