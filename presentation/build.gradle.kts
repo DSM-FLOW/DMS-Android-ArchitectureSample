@@ -42,7 +42,10 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":domain-auth"))
+    implementation(project(":domain-features"))
+    implementation(project(":domain-local-database"))
+    
     implementation(Dependency.coreKtx)
     implementation(Dependency.appcompat)
     implementation(Dependency.androidKtx)
