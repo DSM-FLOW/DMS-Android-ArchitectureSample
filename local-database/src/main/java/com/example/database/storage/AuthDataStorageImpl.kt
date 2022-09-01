@@ -5,11 +5,12 @@ import android.preference.PreferenceManager
 import com.example.database.param.LocalUserViewParam
 import com.example.database.storage.AuthDataStorageImpl.Key.ACCESS_TOKEN
 import com.example.database.storage.AuthDataStorageImpl.Key.REFRESH_TOKEN
+import com.example.database_domain.entity.UserVisibleEntity
 import javax.inject.Inject
 
 class AuthDataStorageImpl @Inject constructor(
     private val context: Context,
-    private val localUserViewParam: LocalUserViewParam
+    private val userVisibleEntity: UserVisibleEntity
 ) : AuthDataStorage {
 
     override fun setAccessToken(token: String) {
@@ -54,11 +55,11 @@ class AuthDataStorageImpl @Inject constructor(
         }
     }
 
-    override fun fetchViewBoolean(): LocalUserViewParam =
-        LocalUserViewParam(
-            getSharedPreference().getBoolean(MEAL.toString(), localUserViewParam.meal),
-            getSharedPreference().getBoolean(POINT.toString(), localUserViewParam.point),
-            getSharedPreference().getBoolean(NOTICE.toString(), localUserViewParam.notice),
+    override fun fetchViewBoolean(): UserVisibleEntity =
+        UserVisibleEntity(
+            getSharedPreference().getBoolean(MEAL.toString(), userVisibleEntity.meal),
+            getSharedPreference().getBoolean(POINT.toString(), userVisibleEntity.point),
+            getSharedPreference().getBoolean(NOTICE.toString(), userVisibleEntity.notice),
         )
 
 
