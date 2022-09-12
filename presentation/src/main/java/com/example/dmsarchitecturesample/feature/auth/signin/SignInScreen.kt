@@ -1,5 +1,6 @@
 package com.example.dmsarchitecturesample.feature.auth.signin
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -18,6 +19,7 @@ import com.example.dmsarchitecturesample.R
 import com.example.dmsarchitecturesample.feature.auth.IdTextField
 import com.example.dmsarchitecturesample.feature.auth.PasswordTextField
 import com.example.dmsarchitecturesample.util.Spacers
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
 fun SignInScreen(
@@ -33,26 +35,30 @@ fun SignInScreen(
             Title()
             Spacers(orientation = stringResource(id = R.string.height), value = 50)
             val idLabel = stringResource(id = R.string.id)
+            var id = ""
             IdTextField(
                 text = state.id,
                 label = idLabel,
                 doOnValueChange = {
                     signInViewModel.setId(it)
+                    id = it
                 },
                 imeAction = ImeAction.Next
             )
 
             val passwordLabel = stringResource(id = R.string.password)
+            var password = ""
             PasswordTextField(
                 text = state.password,
                 label = passwordLabel,
                 doOnValueChange = {
                     signInViewModel.setPassword(it)
+                    password = it
                 },
                 imeAction = ImeAction.Done
             )
             Spacers(orientation = stringResource(id = R.string.height), value = 40)
-            LoginButton()
+            LoginButton(signInViewModel, id, password)
         }
     }
 }
@@ -70,9 +76,16 @@ fun Title() {
 }
 
 @Composable
-fun LoginButton() {
+fun LoginButton(
+    signInViewModel: SignInViewModel = hiltViewModel(),
+    id: String,
+    password: String
+) {
     Button(
-        onClick = {},
+        onClick = {
+            if (id == "" || password == "") {
+            } else signInViewModel.signIn()
+        },
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp),
