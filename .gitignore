@@ -203,3 +203,5 @@ buildSrc/build/tmp/jar/MANIFEST.MF
 data-auth/consumer-rules.pro
 
 data-auth/proguard-rules.pro
+
+presentation/google-services.json
