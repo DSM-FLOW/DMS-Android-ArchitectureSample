@@ -1,7 +1,7 @@
-package com.example.data_auth.remote.datasource.declaration
+package com.example.data_auth.remote.datasource.implementation
 
 import com.example.data_auth.remote.api.UserApi
-import com.example.data_auth.remote.datasource.implementation.RemoteUserDataSource
+import com.example.data_auth.remote.datasource.declaration.RemoteUserDataSource
 import com.example.data_auth.remote.request.SignInRequest
 import com.example.data_auth.remote.response.SignInResponse
 import com.example.data_auth.util.HttpHandler

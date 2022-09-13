@@ -1,6 +1,6 @@
 package com.example.data_auth.repository
 
-import com.example.data_auth.remote.datasource.implementation.RemoteUserDataSource
+import com.example.data_auth.remote.datasource.declaration.RemoteUserDataSource
 import com.example.data_auth.remote.request.SignInRequest
 import com.example.database.datasource.LocalUserDataSource
 import com.example.database.param.LocalUserViewParam
